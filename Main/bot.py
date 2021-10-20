@@ -34,4 +34,12 @@ async def Eightball(ctx, *, question):
 @client.command(aliases=["Hello", "hi", "Hi"])
 async def hello(ctx):
     await ctx.send('Hi')
+
+
+@commands.has_permissions(administrator = True)
+@client.command(aliases=['purge'])
+async def clear(ctx, amount=5):
+    await ctx.channel.purge(limit=amount + 1)
+    
+    
 client.run('TOKEN')
