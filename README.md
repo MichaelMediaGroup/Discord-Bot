@@ -5,7 +5,7 @@ This bot will slowly be updated with my tutorials on building your own discord b
 You will need https://pypi.org/project/discord.py/
 
 
-#requirements
+# requirements
 
 discord.py
 more will be added soon
