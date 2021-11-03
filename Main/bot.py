@@ -41,5 +41,14 @@ async def hello(ctx):
 async def clear(ctx, amount=5):
     await ctx.channel.purge(limit=amount + 1)
     
+@commands.has_permissions(kick_members=True)    
+@client.command()
+async def kick(ctx, Member : discord.Member, *, reason=None):
+    await Member.kick(reason=reason)
+
+@commands.has_permissions(kick_members=True)    
+@client.command()
+async def ban(ctx, Member : discord.Member, *, reason=None):
+    await Member.ban(reason=reason)    
     
 client.run('TOKEN')
