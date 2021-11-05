@@ -5,7 +5,9 @@ from discord.ext import commands
 client = commands.Bot(command_prefix = '.')
 
 @client.event
+await client.change_presence(status=discord.Status.idle, activity=discord.Game(name="Minecraft"))
 async def on_ready():
+    
     print("I am alive.")
 
 @client.command()
@@ -51,28 +53,6 @@ async def kick(ctx, Member : discord.Member, *, reason=None):
 async def ban(ctx, Member : discord.Member, *, reason=None):
     await Member.ban(reason=reason) 
     
-@client.command(aliases=["doggo"], help = "It shows you a Dog photo as well as a fact") #shows a dog photo and a fact
-async def dog(ctx):
-   async with aiohttp.ClientSession() as session:
-      request = await session.get('https://some-random-api.ml/img/dog')
-      dogjson = await request.json()
-      # This time we'll get the fact request as well!
-      request2 = await session.get('https://some-random-api.ml/facts/dog')
-      factjson = await request2.json()
-
-   embed = discord.Embed(title="Doggo!", color=discord.Color.purple())
-   embed.set_image(url=dogjson['link'])
-   embed.set_footer(text=factjson['fact'])
-   await ctx.send(embed=embed)
-
-@client.command(help = "It shows you a cat photo as well as a fact") #shows cat photo and fact
-async def cat(ctx):
-   async with aiohttp.ClientSession() as session:
-      request = await session.get('https://some-random-api.ml/img/cat')
-      dogjson = await request.json()
-      # This time we'll get the fact request as well!
-      request2 = await session.get('https://some-random-api.ml/facts/cat')
-      factjson = await request2.json()
         
         
 client.run('TOKEN')
